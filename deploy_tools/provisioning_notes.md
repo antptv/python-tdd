@@ -18,11 +18,13 @@ eg, on Ubuntu:
 
 * see nginx.template.conf
 * replace DOMAIN with, e.g., staging.my-domain.com
+* replace USERNAME with yours
 
 ## Systemd service
 
 * see gunicorn-systemd.template.service
 * replace DOMAIN with, e.g., staging.my-domain.com
+* replace USERNAME with yours
 
 ## Folder structure:
 
