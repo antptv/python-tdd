@@ -1,5 +1,5 @@
 from django.test import TestCase
-from lists.forms import ItemForm, EMPTY_LIST_ERROR
+from lists.forms import ItemForm, EMPTY_ITEM_ERROR
 
 
 class ItemFormTest(TestCase):
@@ -14,5 +14,5 @@ class ItemFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEqual(
             form.errors['text'],
-            [EMPTY_LIST_ERROR]
+            [EMPTY_ITEM_ERROR]
         )
