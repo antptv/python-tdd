@@ -35,7 +35,6 @@ def _update_virtualenv():
 def _create_or_update_dotenv():
     append('.env', 'DJANGO_DEBUG_FALSE=y')
     append('.env', f'SITENAME={env.host}')
-    append('.env', f'EMAIL_PASSWORD={os.environ.get("EMAIL_PASSWORD")}')
     current_contents = run('cat .env')
     if 'EMAIL_PASSWORD' not in current_contents:
         append('.env', f'EMAIL_PASSWORD={os.environ.get("EMAIL_PASSWORD")}')
