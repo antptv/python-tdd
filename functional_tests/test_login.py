@@ -25,13 +25,13 @@ class LoginTest(FunctionalTest):
         try:
             inbox.user(test_email)
             inbox.pass_(os.environ['YAHOO_PASSWORD'])
-            while time.time - start < 60:
-                count, _ = inbox.stat
+            while time.time() - start < 60:
+                # get 10 newest messages
+                count, _ = inbox.stat()
                 for i in reversed(range(max(1, count - 10), count + 1)):
                     print('getting msg', i)
                     _, lines, __ = inbox.retr(i)
-                    lines = [l.decode('utf8') for l in lines]
-                    print(lines)
+                    lines = [line.decode('utf8') for line in lines]
                     if f'Subject: {subject}' in lines:
                         email_id = i
                         body = '\n'.join(lines)
