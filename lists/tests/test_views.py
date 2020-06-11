@@ -11,6 +11,9 @@ from lists.forms import (
     DUPLICATE_ITEM_ERROR
 )
 from unittest import skip
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class HomePageTest(TestCase):
@@ -161,3 +164,9 @@ class MyListTest(TestCase):
     def test_my_lists_url_renders_my_lists_template(self):
         response = self.client.get('/lists/users/a@b.com/')
         self.assertTemplateUsed(response, 'my_lists.html')
+
+    def test_passes_coorecct_owner_to_template(self):
+        User.objects.create(email='wrong@owner.com')
+        correct_user = User.objects.create(email='a@b.com')
+        response = self.client.get('/lists/users/a@b.com')
+        self.assertEqual(response.context['owner'], correct_user)
