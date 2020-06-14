@@ -2,7 +2,7 @@
 
 {% block header_text %}My lists{% endblock %}
 
-{% block list_form %}{% endblock list_form %}
+{% block list_form %}{% endblock %}
 
 {% block extra_content %}
 	<h2>{{ owner.email }}'s lists </h2>
@@ -11,4 +11,4 @@
 			<li><a href="{{ list.get_absolute_url }}">{{ list.name }}</a></li>  
         {% endfor %}
     </ul>
-{% endblock extra_content %}
+{% endblock %}
